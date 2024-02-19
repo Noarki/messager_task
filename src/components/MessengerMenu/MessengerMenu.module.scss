@@ -1,0 +1,55 @@
+.messengerMenuWrapper {
+    max-width: 1076px;
+
+    position: relative;
+    bottom: 268px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    display: none;
+}
+
+.mainWrapper {
+    background-color: white;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end; // Для ответа бота flex-start
+    border-radius: 25px;
+}
+
+.messageSubmitWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 40px 58px 20px 58px;
+}
+
+.messageInput {
+    width: 783px;
+    background-color: #f2f2f7;
+    outline: none;
+
+    width: 783px;
+    height: 48px;
+    margin-right: 24px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 17px;
+
+    border-radius: 8px;
+    padding-left: 8px;
+}
+
+.messengerMenuText {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 20px;
+
+    letter-spacing: 0%;
+}

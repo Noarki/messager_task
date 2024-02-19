@@ -1,0 +1,50 @@
+.mainWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    max-width: 1076px;
+}
+
+.headerSelectionTextWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    width: 100%;
+    margin-bottom: 100px;
+
+    .headerText {
+        letter-spacing: 0;
+    }
+}
+
+.headerText {
+    color: #000000;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.40799999237060547px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.allChatsShowBtn {
+    background-color: #336cff;
+    color: #ffffff;
+    // font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 153px;
+    height: 43px;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 5;
+}

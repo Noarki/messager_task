@@ -1,0 +1,26 @@
+.mainWrapper {
+}
+
+.messageUserBubbleWrapper {
+    max-width: 820px;
+    max-height: 164px;
+    margin-right: 58px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgb(239, 253, 222);
+    border-radius: 15px;
+}
+
+.messageText {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 14px;
+    margin-right: 26px;
+}
+
+.messageData {
+    padding-right: 14px;
+}

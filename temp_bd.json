@@ -1,0 +1,9 @@
+{
+    "chats": [
+        {
+            "name": "chat1",
+            "userMessages": "[]",
+            "botsMessages": "[]"
+        }
+    ]
+}

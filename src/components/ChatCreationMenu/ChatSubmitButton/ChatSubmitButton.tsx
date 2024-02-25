@@ -2,17 +2,20 @@ import React from 'react';
 import style from './ChatSubmitButton.module.scss';
 import Button from '../../Button/btn';
 
-// interface Iprops {
-//     children?: String;
-//     onClick?: () => void;
-// }{ children, onClick }
+interface Iprops {
+    chatName?: string;
 
-const handleClick = () => {
-    console.log('chat aboba');
-};
+    showMessageWindow: boolean;
+    setShowMessageWindow: (x: boolean) => void;
+}
 
-const ChatSubmitButton: React.FC = () => {
-    return <Button children='' className={style.ChatSubmitButton} onClick={() => handleClick} />;
+const ChatSubmitButton: React.FC<Iprops> = ({ chatName, showMessageWindow, setShowMessageWindow }) => {
+    const handleClick = () => {
+        setShowMessageWindow(!showMessageWindow);
+        console.log(showMessageWindow);
+    };
+
+    return <Button className={style.ChatSubmitButton} onClick={handleClick} children={chatName} />;
 };
 
 export default ChatSubmitButton;

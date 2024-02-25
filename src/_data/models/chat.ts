@@ -1,4 +1,3 @@
 export interface IChatState {
-    showChatCreationMenu: boolean;
-    showNewChatCreationPanel: boolean;
+    allChatsList: string[];
 }

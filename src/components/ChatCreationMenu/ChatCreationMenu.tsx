@@ -4,8 +4,10 @@ import Button from '../Button/btn';
 import ChatCreationPanel from './ChatCreationPanel/ChatCreationPanel';
 import ChatSubmitButton from './ChatSubmitButton/ChatSubmitButton';
 
-import { useAppDispatch, useAppSelector } from '../../_data/models/hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../_data/hooks/redux';
 import { JsxElement } from 'typescript';
+import { chatSlice } from '../../_data/store/redusers/chatReducer';
+import { IChat } from '../../_data/models/chat';
 
 interface Iprops {
     showMessageWindow: boolean;
@@ -16,7 +18,7 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
     const [displayCreationPanel, setDisplayCreationPanel] = useState<boolean>(false);
 
     const { allChatsList } = useAppSelector((state) => state.chat);
-    const dispatch = useAppDispatch;
+    const dispatch = useAppDispatch();
 
     const handleClick = () => {
         console.log('Нажатие на создание нового чата');
@@ -34,6 +36,10 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
             );
     };
 
+    const handleSetActiveChat = (chat: IChat) => {
+        dispatch(chatSlice.actions.setActiveChat(chat));
+    };
+
     let renderChatNameButtons = () => {
         // allChatsList.map((chatName) => {
         //     return <ChatSubmitButton chatName={chatName} />;
@@ -49,8 +55,9 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
             <ChatSubmitButton
                 chatName={obj.name}
                 key={obj.id}
-                showMessageWindow={showMessageWindow}
-                setShowMessageWindow={setShowMessageWindow}
+                onClick={() => handleSetActiveChat(obj)}
+                // showMessageWindow={showMessageWindow}
+                // setShowMessageWindow={setShowMessageWindow}
             />
         ));
     };

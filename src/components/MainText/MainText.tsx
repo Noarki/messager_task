@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './MainText.module.scss';
 import Button from '../Button/btn';
-import ChatCreationMenu from '../ChatCreationMenu/ChatCreationMenu';
 
-import { useDispatch } from 'react-redux';
-import { chatSlice } from '../../store/redusers/chatReducer';
-import { AppDispatch } from '../../store/store';
+import { useAppDispatch } from '../../_data/hooks/redux';
 
 interface Iprops {
     setShowChatCreationMenu: (x: boolean) => void;
@@ -13,7 +10,7 @@ interface Iprops {
 }
 
 const MainText: React.FC<Iprops> = ({ setShowChatCreationMenu, showChatCreationMenu }) => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
     const handleClick = () => {
         setShowChatCreationMenu(!showChatCreationMenu);

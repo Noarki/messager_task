@@ -3,9 +3,10 @@ import style from './ChatCreationPanel.module.scss';
 import Button from '../../Button/btn';
 import ChatSubmitButton from '../ChatSubmitButton/ChatSubmitButton';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../store/store';
-import { chatSlice } from '../../../store/redusers/chatReducer';
-import { useAppSelector } from '../../../_data/models/hooks/redux';
+
+import { useAppSelector } from '../../../_data/hooks/redux';
+import { chatSlice } from '../../../_data/store/redusers/chatReducer';
+import { AppDispatch } from '../../../_data/store/store';
 
 interface Iprops {
     setDisplayCreationPanel: (x: boolean) => void;
@@ -34,13 +35,13 @@ const ChatCreationPanel: React.FC<Iprops> = ({
         setDisplayCreationPanel(false);
         dispatch(addNewChat(chatName));
 
-        return (
-            <ChatSubmitButton
-                chatName={chatName}
-                showMessageWindow={showMessageWindow}
-                setShowMessageWindow={setShowMessageWindow}
-            />
-        );
+        // return (
+        //     <ChatSubmitButton
+        //         chatName={chatName}
+        //         showMessageWindow={showMessageWindow}
+        //         setShowMessageWindow={setShowMessageWindow}
+        //     />
+        // );
     };
 
     return (

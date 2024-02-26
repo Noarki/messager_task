@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../_data/models/hooks/redux';
+import { useAppSelector } from '../../_data/hooks/redux';
 import Button from '../Button/btn';
 import MessageBubble from './MessageBubble/MessageBubble';
 import style from './MessengerMenu.module.scss';
@@ -8,11 +8,11 @@ interface Iprops {}
 const MessengerMenu = () => {
     const handleClick = () => {};
 
-    const {} = useAppSelector((state) => state.chat);
+    const { activeChat } = useAppSelector((state) => state.chat);
 
     return (
         <div className={style.messengerMenuWrapper}>
-            <p className={style.messengerMenuText}>Тут будет название чата</p>
+            <p className={style.messengerMenuText}>{activeChat?.name}</p>
             <div className={style.mainWrapper}>
                 <MessageBubble />
                 <div className={style.messageSubmitWrapper}>

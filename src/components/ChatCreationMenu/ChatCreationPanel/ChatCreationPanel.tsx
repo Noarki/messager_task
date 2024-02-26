@@ -5,6 +5,7 @@ import ChatSubmitButton from '../ChatSubmitButton/ChatSubmitButton';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import { chatSlice } from '../../../store/redusers/chatReducer';
+import { useAppSelector } from '../../../_data/models/hooks/redux';
 
 interface Iprops {
     setDisplayCreationPanel: (x: boolean) => void;
@@ -23,12 +24,13 @@ const ChatCreationPanel: React.FC<Iprops> = ({
 
     const [chatName, setChatName] = useState('');
 
+    const { allChatsList } = useAppSelector((state) => state.chat);
+
     const handleChatNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value !== '') setChatName(e.target.value);
     };
 
     const handleClick = () => {
-        console.log('Нажата кнопка завершения создания чата');
         setDisplayCreationPanel(false);
         dispatch(addNewChat(chatName));
 

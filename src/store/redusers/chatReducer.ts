@@ -2,7 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IChatState } from '../../_data/models/chat';
 
 const initialState: IChatState = {
-    allChatsList: [],
+    allChatsList: [
+        {
+            name: '',
+            id: 0,
+            userMessages: [],
+            botsMessages: [],
+        },
+    ],
+    activeChat: {},
 };
 
 export const chatSlice = createSlice({
@@ -10,7 +18,15 @@ export const chatSlice = createSlice({
     initialState,
     reducers: {
         addNewChat(state, action: PayloadAction<string>) {
-            state.allChatsList.push(action.payload);
+            state.allChatsList.push({
+                name: action.payload,
+                botsMessages: [],
+                userMessages: [],
+                id: state.allChatsList.length,
+            });
+        },
+        setActiveChat(state, action: PayloadAction<number>) {
+            state.activeChat = state.allChatsList[action.payload];
         },
     },
 });

@@ -1,3 +1,16 @@
 export interface IChatState {
-    allChatsList: string[];
+    allChatsList: [
+        {
+            name: string;
+            id: number;
+            userMessages?: string[];
+            botsMessages?: string[];
+        }
+    ];
+    activeChat?: {
+        name?: string;
+        id?: number;
+        userMessages?: string[];
+        botsMessages?: string[];
+    };
 }

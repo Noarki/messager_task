@@ -7,3 +7,5 @@ import { AppDispatch, AppState } from '../store';
 // };
 
 export const addChatName = (name: string) => (dispatch: AppDispatch, payload: AppState) => {};
+
+export const setActiveChat = (key: number) => (dispatch: AppDispatch, payload: AppState) => {};

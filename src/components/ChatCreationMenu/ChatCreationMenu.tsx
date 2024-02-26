@@ -5,6 +5,7 @@ import ChatCreationPanel from './ChatCreationPanel/ChatCreationPanel';
 import ChatSubmitButton from './ChatSubmitButton/ChatSubmitButton';
 
 import { useAppDispatch, useAppSelector } from '../../_data/models/hooks/redux';
+import { JsxElement } from 'typescript';
 
 interface Iprops {
     showMessageWindow: boolean;
@@ -34,8 +35,6 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
     };
 
     let renderChatNameButtons = () => {
-        console.log('Вызвана функция рендеринга');
-
         // allChatsList.map((chatName) => {
         //     return <ChatSubmitButton chatName={chatName} />;
         // });
@@ -46,14 +45,14 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
         //     }
         // }
 
-        const listItems = allChatsList.map((names) => (
+        return allChatsList.map((obj) => (
             <ChatSubmitButton
-                chatName={names}
+                chatName={obj.name}
+                key={obj.id}
                 showMessageWindow={showMessageWindow}
                 setShowMessageWindow={setShowMessageWindow}
             />
         ));
-        return listItems;
     };
 
     return (

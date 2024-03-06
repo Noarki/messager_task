@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    overflow: auto;
 }
 
 .chatSelectionMenu {
@@ -29,7 +30,7 @@
 
 .newChatCreationBtn {
     width: 432px;
-    height: 42px;
+    min-height: 42px;
     background-color: rgb(51, 108, 255);
     color: white;
     border-radius: 8px;

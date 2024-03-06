@@ -5,7 +5,7 @@ import ChatCreationPanel from './ChatCreationPanel/ChatCreationPanel';
 import ChatSubmitButton from './ChatSubmitButton/ChatSubmitButton';
 
 import { useAppDispatch, useAppSelector } from '../../_data/hooks/redux';
-import { JsxElement } from 'typescript';
+
 import { chatSlice } from '../../_data/store/redusers/chatReducer';
 import { IChat } from '../../_data/models/chat';
 
@@ -41,23 +41,13 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
     };
 
     let renderChatNameButtons = () => {
-        // allChatsList.map((chatName) => {
-        //     return <ChatSubmitButton chatName={chatName} />;
-        // });
-
-        // if (allChatsList[0] !== '') {
-        //     for (let index = 0; index < allChatsList.length; index++) {
-        //         return <ChatSubmitButton chatName={allChatsList[index]} />;
-        //     }
-        // }
-
         return allChatsList.map((obj) => (
             <ChatSubmitButton
                 chatName={obj.name}
                 key={obj.id}
                 onClick={() => handleSetActiveChat(obj)}
-                // showMessageWindow={showMessageWindow}
-                // setShowMessageWindow={setShowMessageWindow}
+                showMessageWindow={showMessageWindow}
+                setShowMessageWindow={setShowMessageWindow}
             />
         ));
     };

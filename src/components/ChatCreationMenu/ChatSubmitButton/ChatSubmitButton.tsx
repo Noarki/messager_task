@@ -6,8 +6,8 @@ import { useAppDispatch } from '../../../_data/hooks/redux';
 interface Iprops {
     chatName: string;
     onClick: () => void;
-    // showMessageWindow: boolean;
-    // setShowMessageWindow: (x: boolean) => void;
+    showMessageWindow: boolean;
+    setShowMessageWindow: (x: boolean) => void;
 }
 
 const ChatSubmitButton: React.FC<Iprops> = ({ chatName, onClick }) => {

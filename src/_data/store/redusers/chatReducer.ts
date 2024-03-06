@@ -13,18 +13,32 @@ export const chatSlice = createSlice({
             return {
                 ...state,
                 allChatsList: [
-                    ...state.allChatsList,
                     {
                         name: action.payload,
                         botsMessages: [],
+                        botsResponces: [],
                         userMessages: [],
+                        userMessagesDates: [],
                         id: state.allChatsList.length,
                     },
+                    ...state.allChatsList,
                 ],
             };
         },
         setActiveChat(state, action: PayloadAction<IChat>) {
             return { ...state, activeChat: action.payload };
+        },
+        sendUserMessage(state, action: PayloadAction<IChat>) {
+            return {
+                ...state,
+                activeChat: action.payload,
+            };
+        },
+        addBotsResponse(state, action: PayloadAction<IChat>) {
+            return {
+                ...state,
+                activeChat: action.payload,
+            };
         },
     },
 });

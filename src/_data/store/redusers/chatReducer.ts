@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IChat, IChatState } from '../../models/chat';
+import { IChat, IChatState, IMessage } from '../../models/chat';
 
 const initialState: IChatState = {
     allChatsList: [],
@@ -14,32 +14,41 @@ export const chatSlice = createSlice({
                 ...state,
                 allChatsList: [
                     {
+                        id: state.allChatsList.length + 1,
                         name: action.payload,
-                        botsMessages: [],
-                        botsResponces: [],
-                        userMessages: [],
-                        userMessagesDates: [],
-                        id: state.allChatsList.length,
+                        messages: [],
                     },
                     ...state.allChatsList,
                 ],
             };
         },
-        setActiveChat(state, action: PayloadAction<IChat>) {
-            return { ...state, activeChat: action.payload };
-        },
-        sendUserMessage(state, action: PayloadAction<IChat>) {
+        setActiveChat(state, action: PayloadAction<number>) {
             return {
                 ...state,
-                activeChat: action.payload,
+                activeId: action.payload,
             };
         },
-        addBotsResponse(state, action: PayloadAction<IChat>) {
+        setMessage(state, action: PayloadAction<IChat[]>) {
             return {
                 ...state,
-                activeChat: action.payload,
+                allChatsList: action.payload,
             };
         },
+        // setActiveChat(state, action: PayloadAction<IChat>) {
+        //     return { ...state, activeChat: action.payload };
+        // },
+        // sendUserMessage(state, action: PayloadAction<IChat>) {
+        //     return {
+        //         ...state,
+        //         activeChat: action.payload,
+        //     };
+        // },
+        // addBotsResponse(state, action: PayloadAction<IChat>) {
+        //     return {
+        //         ...state,
+        //         activeChat: action.payload,
+        //     };
+        // },
     },
 });
 

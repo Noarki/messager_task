@@ -1,22 +1,16 @@
 export interface IChatState {
     allChatsList: IChat[];
-    activeChat?: IChat;
+    activeId?: number;
 }
 
 export interface IChat {
-    name: string;
     id: number;
-
-    userMessages: string[];
-    userMessagesDates: string[];
-    botsResponces: string[];
-
-    chatResult?: IMessages[];
-    botsMessages: string[];
+    name: string;
+    messages: IMessage[];
 }
 
-export interface IMessages {
-    id: string;
+export interface IMessage {
+    id: 'user' | 'bot'; // ENUM better
     message: string;
     date: string;
 }

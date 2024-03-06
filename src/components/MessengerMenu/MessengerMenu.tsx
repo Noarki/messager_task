@@ -1,18 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../_data/hooks/redux';
 import Button from '../Button/btn';
 
 import style from './MessengerMenu.module.scss';
 import { IChat } from '../../_data/models/chat';
 import MessageBubbleList from './MessageBubble/MessageBubble';
-import { addBotsResponse, sendUserMessage } from '../../_data/store/actions/chatAction';
+// import { addBotsResponse, sendUserMessage } from '../../_data/store/actions/chatAction';
 import moment from 'moment';
+import { setUsereMessage } from '../../_data/store/actions/chatAction';
 
 interface Iprops {}
 
-const MessengerMenu = () => {
-    const { activeChat } = useAppSelector((state) => state.chat);
-
+const MessengerMenu = ({ chat }: { chat: IChat }) => {
     const [userMessage, setUserMessage] = useState('');
 
     const dispatch = useAppDispatch();
@@ -27,25 +26,34 @@ const MessengerMenu = () => {
     };
 
     const handleClick = () => {
-        if (userMessage !== '') {
-            dispatch(sendUserMessage(userMessage, getMessageTime()));
-        }
-        setUserMessage('');
+        dispatch(setUsereMessage(userMessage, '12:12'));
 
-        setTimeout(() => {
-            dispatch(addBotsResponse());
-        }, 5000);
+        // if (userMessage !== '') {
+        //     dispatch(sendUserMessage(userMessage, getMessageTime()));
+        // }
+        // setUserMessage('');
+        // setTimeout(() => {
+        //     dispatch(addBotsResponse());
+        // }, 5000);
     };
 
     return (
         <div className={style.messengerMenuWrapper} onClick={(e) => e.stopPropagation()}>
-            <p className={style.messengerMenuText}>{String(activeChat?.name)}</p>
+            <p className={style.messengerMenuText}>{chat?.name}</p>
             <div className={style.mainWrapper}>
-                <MessageBubbleList
+                {/* <MessageBubbleList
                     userChat={activeChat?.userMessages}
                     userDates={activeChat?.userMessagesDates}
                     botResponses={activeChat?.botsResponces}
-                />
+                /> */}
+                <div className='ППП'>
+                    {chat?.messages.map((messages) => (
+                        <>
+                            <p>{messages.id}</p>
+                            <p>{messages.message}</p>
+                        </>
+                    ))}
+                </div>
 
                 <div className={style.messageSubmitWrapper}>
                     <input

@@ -36,16 +36,16 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
             );
     };
 
-    const handleSetActiveChat = (chat: IChat) => {
-        dispatch(chatSlice.actions.setActiveChat(chat));
-    };
+    // const handleSetActiveChat = (chat: IChat) => {
+    //     dispatch(chatSlice.actions.setActiveChat(chat));
+    // };
 
     let renderChatNameButtons = () => {
         return allChatsList.map((obj) => (
             <ChatSubmitButton
                 chatName={obj.name}
                 key={obj.id}
-                onClick={() => handleSetActiveChat(obj)}
+                onClick={() => dispatch(chatSlice.actions.setActiveChat(obj.id))}
                 showMessageWindow={showMessageWindow}
                 setShowMessageWindow={setShowMessageWindow}
             />

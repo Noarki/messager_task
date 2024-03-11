@@ -24,12 +24,13 @@
     display: inline-flex;
     max-width: 620px;
     max-height: 164px;
-    margin: 18px 58px 0 58px;
+    margin: 18px 32px 0 58px;
     border-radius: 15px;
     justify-content: space-between;
     align-items: center;
 
     background-color: rgb(239, 253, 222);
+    color: rgb(109, 181, 102);
 }
 
 .messageUserBubbleWrapperBot {
@@ -40,7 +41,7 @@
     border-radius: 15px;
     justify-content: space-between;
     align-items: center;
-
+    color: rgb(165, 174, 184);
     background-color: rgb(242, 242, 247);
 }
 
@@ -67,15 +68,22 @@
     flex-wrap: wrap;
     padding-left: 14px;
     margin-right: 26px;
-
+    color: black;
     overflow-wrap: anywhere;
+    font-size: 14px;
 }
 
 .dataText {
     margin-right: 12px;
 }
 
-.messageData {
+.dataText {
     padding-right: 14px;
     max-height: 164px;
+
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+
+    letter-spacing: -0.41px;
 }

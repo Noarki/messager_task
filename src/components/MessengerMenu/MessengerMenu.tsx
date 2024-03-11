@@ -5,13 +5,15 @@ import Button from '../Button/btn';
 import style from './MessengerMenu.module.scss';
 import { IChat } from '../../_data/models/chat';
 import MessageBubbleList from './MessageBubble/MessageBubble';
-import { addBotsResponse, sendUserMessage } from '../../_data/store/actions/chatAction';
+import { sendBotsResponse, sendUserMessage } from '../../_data/store/actions/chatAction';
 import moment from 'moment';
 
-interface Iprops {}
+interface Iprops {
+    chat: IChat;
+}
 
-const MessengerMenu = () => {
-    const { activeChat } = useAppSelector((state) => state.chat);
+const MessengerMenu: React.FC<Iprops> = (chat) => {
+    const {} = useAppSelector((state) => state.chat);
 
     const [userMessage, setUserMessage] = useState('');
 
@@ -29,23 +31,28 @@ const MessengerMenu = () => {
     const handleClick = () => {
         if (userMessage !== '') {
             dispatch(sendUserMessage(userMessage, getMessageTime()));
+
+            setTimeout(() => {
+                dispatch(sendBotsResponse(userMessage, getMessageTime()));
+            }, 10000);
         }
         setUserMessage('');
-
-        setTimeout(() => {
-            dispatch(addBotsResponse());
-        }, 5000);
     };
 
     return (
         <div className={style.messengerMenuWrapper} onClick={(e) => e.stopPropagation()}>
-            <p className={style.messengerMenuText}>{String(activeChat?.name)}</p>
+            <p className={style.messengerMenuText}>{chat.chat.name}</p>
             <div className={style.mainWrapper}>
-                <MessageBubbleList
-                    userChat={activeChat?.userMessages}
-                    userDates={activeChat?.userMessagesDates}
-                    botResponses={activeChat?.botsResponces}
-                />
+                {/* <div className={style.ППП}>
+                    {chat.chat.messages.map((messages) => (
+                        <>
+                            <p>{messages.id}</p>
+                            <p>{messages.message}</p>
+                        </>
+                    ))}
+                </div> */}
+
+                <MessageBubbleList userChatMessages={chat.chat.messages} />
 
                 <div className={style.messageSubmitWrapper}>
                     <input

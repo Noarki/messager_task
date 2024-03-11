@@ -5,16 +5,27 @@ import MessengerMenu from '../../components/MessengerMenu/MessengerMenu';
 import style from './index.module.scss';
 
 import { useAppSelector } from '../../_data/hooks/redux';
+import { getActiveChatById } from '../../utils/utils';
 
 function Main() {
     // const { showChatCreationMenu } = useSelector((state: RootState) => state.chat);
 
     const [showChatCreationMenu, setShowChatCreationMenu] = useState(false);
     const [showMessageWindow, setShowMessageWindow] = useState(false);
-    const { activeChat } = useAppSelector((state) => state.chat);
+    const { activeChatId, allChatsList } = useAppSelector((state) => state.chat);
 
     const outclickCreationMenu = (e: React.MouseEvent<HTMLDivElement>) => {
         setShowChatCreationMenu(!showChatCreationMenu);
+    };
+
+    const renderActiveChat = () => {
+        const activeChat = getActiveChatById(allChatsList, activeChatId);
+
+        if (activeChat) {
+            return <MessengerMenu chat={activeChat} />;
+        }
+
+        return <></>;
     };
 
     return (
@@ -30,7 +41,7 @@ function Main() {
                 />
             )}
 
-            {activeChat && <MessengerMenu />}
+            {renderActiveChat()}
         </div>
     );
 }

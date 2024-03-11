@@ -1,40 +1,34 @@
 import React from 'react';
 import style from './MessageBubble.module.scss';
+import { IMessages } from '../../../_data/models/chat';
 
 interface IProps {
-    bubbleStylisation?: string;
-    userChat?: string[];
-    userDates?: string[];
-    botResponses?: string[];
+    userChatMessages?: IMessages[];
 }
 
-const MessageBubbleList: React.FC<IProps> = ({ userChat, userDates, botResponses }) => {
+const MessageBubbleList: React.FC<IProps> = ({ userChatMessages }) => {
     return (
         <div className={style.mainWrapper}>
-            {userChat?.map((message, index) => (
-                <div className={style.positionHelperWrap}>
-                    <div className={style.invisibleBlock}></div>
-                    <div className={style.messageUserBubbleWrapper}>
-                        <p className={style.messageText}> {message} </p>
-                        {userDates && <p className={style.messageData}> {userDates[index]} </p>}
+            {userChatMessages?.map((messageData) => (
+                <div
+                    className={
+                        messageData.id === 'user'
+                            ? style.positionControlerTypeUser
+                            : style.positionControlerTypeBot
+                    }
+                >
+                    <div
+                        className={
+                            messageData.id === 'user'
+                                ? style.messageUserBubbleWrapperUser
+                                : style.messageUserBubbleWrapperBot
+                        }
+                    >
+                        <p className={style.messageText}> {messageData.message} </p>
+                        <p className={style.dataText}>{messageData.date}</p>
                     </div>
                 </div>
             ))}
-
-            {botResponses?.map((response) => (
-                <div>
-                    <p>{response}</p>
-                </div>
-            ))}
-            {/* <div className={style.messageUserBubbleWrapper}>
-                <p className={style.messageText}>
-                    Здесь будет отображаться ваше сообщение Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Dolore deserunt animi molestiae hic quidem, itaque ipsa tenetur odit
-                    assumenda debitis voluptatum adipisci reiciendis libero inventore mollitia! Rerum eveniet
-                    reiciendis quas.
-                </p>
-                <p className={style.messageData}> 20:00</p>
-            </div> */}
         </div>
     );
 };

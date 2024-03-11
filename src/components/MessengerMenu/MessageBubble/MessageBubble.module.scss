@@ -1,35 +1,47 @@
 .mainWrapper {
     overflow-y: auto;
-    overflow-x: hidden;
+    overscroll-behavior-y: auto;
     margin: 10px 10px 0 0;
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
-.positionHelperWrap {
+.positionControlerTypeUser {
     display: flex;
-    flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-.invisibleBlock {
-    background-color: wheat;
-    width: 40%;
+.positionControlerTypeBot {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
 }
 
-.messageUserBubbleWrapper {
+.messageUserBubbleWrapperUser {
+    display: inline-flex;
     max-width: 620px;
     max-height: 164px;
-    margin-right: 58px;
-    margin-bottom: 18px;
-    display: flex;
-
-    align-items: flex-end;
-    background-color: rgb(239, 253, 222);
+    margin: 18px 58px 0 58px;
     border-radius: 15px;
     justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(239, 253, 222);
+}
+
+.messageUserBubbleWrapperBot {
+    display: inline-flex;
+    max-width: 620px;
+    max-height: 164px;
+    margin: 18px 58px 0 58px;
+    border-radius: 15px;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(242, 242, 247);
 }
 
 // .messageUserBubbleWrapper {
@@ -57,6 +69,10 @@
     margin-right: 26px;
 
     overflow-wrap: anywhere;
+}
+
+.dataText {
+    margin-right: 12px;
 }
 
 .messageData {

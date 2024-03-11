@@ -37,7 +37,7 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
     };
 
     const handleSetActiveChat = (chat: IChat) => {
-        dispatch(chatSlice.actions.setActiveChat(chat));
+        dispatch(chatSlice.actions.setActiveChat(chat.id));
     };
 
     let renderChatNameButtons = () => {

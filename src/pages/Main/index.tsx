@@ -5,7 +5,7 @@ import MessengerMenu from '../../components/MessengerMenu/MessengerMenu';
 import style from './index.module.scss';
 
 import { useAppSelector } from '../../_data/hooks/redux';
-import { getActiveChatById } from '../../utils/utils';
+import { getActiveChatById } from '../../_data/utils/utils';
 
 function Main() {
     // const { showChatCreationMenu } = useSelector((state: RootState) => state.chat);

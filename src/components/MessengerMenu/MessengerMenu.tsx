@@ -34,7 +34,7 @@ const MessengerMenu: React.FC<Iprops> = (chat) => {
 
             setTimeout(() => {
                 dispatch(sendBotsResponse(userMessage, getMessageTime()));
-            }, 10000);
+            }, 3000);
         }
         setUserMessage('');
     };

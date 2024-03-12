@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { chatSlice } from '../redusers/chatReducer';
 import { AppDispatch, AppState } from '../store';
+import { getAnswer } from '../../utils/utils';
 
 // export const ChatCreationMenuShow = () => (dispatch: AppDispatch) => {
 //     dispatch(chatSlice.actions.changeChatCreationMenuShow());
@@ -78,7 +79,7 @@ export const sendBotsResponse =
                         {
                             id: 'bot',
                             date: date,
-                            message: 'Вы написали ' + message,
+                            message: getAnswer(),
                         },
                     ],
                 };

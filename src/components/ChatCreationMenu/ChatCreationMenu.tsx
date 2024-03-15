@@ -3,9 +3,7 @@ import style from './ChatCreationMenu.module.scss';
 import Button from '../Button/btn';
 import ChatCreationPanel from './ChatCreationPanel/ChatCreationPanel';
 import ChatSubmitButton from './ChatSubmitButton/ChatSubmitButton';
-
 import { useAppDispatch, useAppSelector } from '../../_data/hooks/redux';
-
 import { chatSlice } from '../../_data/store/redusers/chatReducer';
 import { IChat } from '../../_data/models/chat';
 
@@ -16,13 +14,17 @@ interface Iprops {
 
 const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageWindow }) => {
     const [displayCreationPanel, setDisplayCreationPanel] = useState<boolean>(false);
-
     const { allChatsList } = useAppSelector((state) => state.chat);
+
     const dispatch = useAppDispatch();
 
     const handleClick = () => {
         console.log('Нажатие на создание нового чата');
         setDisplayCreationPanel(true);
+    };
+
+    const handleSetActiveChat = (chat: IChat) => {
+        dispatch(chatSlice.actions.setActiveChat(chat.id));
     };
 
     const renderChatCreation = () => {
@@ -34,10 +36,6 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
                     setShowMessageWindow={setShowMessageWindow}
                 />
             );
-    };
-
-    const handleSetActiveChat = (chat: IChat) => {
-        dispatch(chatSlice.actions.setActiveChat(chat.id));
     };
 
     let renderChatNameButtons = () => {

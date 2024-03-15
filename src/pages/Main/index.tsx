@@ -15,7 +15,7 @@ function Main() {
     const { activeChatId, allChatsList } = useAppSelector((state) => state.chat);
 
     const outclickCreationMenu = (e: React.MouseEvent<HTMLDivElement>) => {
-        setShowChatCreationMenu(!showChatCreationMenu);
+        if (showChatCreationMenu) setShowChatCreationMenu(!showChatCreationMenu);
     };
 
     const renderActiveChat = () => {
@@ -30,6 +30,7 @@ function Main() {
 
     return (
         <div className={style.mainWrapper} onClick={outclickCreationMenu}>
+            {/* <div className={style.invisibleClickScreen}></div> */}
             <MainText
                 setShowChatCreationMenu={setShowChatCreationMenu}
                 showChatCreationMenu={showChatCreationMenu}

@@ -3,7 +3,16 @@ body {
 }
 
 .mainWrapper {
-    margin: 38px 182px 0px 182px;
-    height: 800px;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 95vh;
     width: 100%;
+    position: relative;
+}
+
+.invisibleClickScreen {
+    width: 100%;
+    height: 46vh;
+    position: absolute;
+    z-index: 3;
 }

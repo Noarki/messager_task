@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './btn.module.scss';
 
 interface IProps {
     children?: string;

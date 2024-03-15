@@ -1,14 +1,17 @@
 import React from 'react';
 import style from './MessageBubble.module.scss';
 import { IMessages } from '../../../_data/models/chat';
+import { useChatScroll } from '../../../_data/hooks/redux';
 
 interface IProps {
     userChatMessages?: IMessages[];
 }
 
 const MessageBubbleList: React.FC<IProps> = ({ userChatMessages }) => {
+    const ref = useChatScroll(userChatMessages);
+
     return (
-        <div className={style.mainWrapper}>
+        <div ref={ref} className={style.mainWrapper}>
             {userChatMessages?.map((messageData) => (
                 <div
                     className={

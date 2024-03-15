@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IChat, IChatState, IMessages } from '../../models/chat';
+import { IChat, IChatState } from '../../models/chat';
 
 const initialState: IChatState = {
     allChatsList: [],
@@ -28,13 +28,6 @@ export const chatSlice = createSlice({
         },
 
         sendMessage(state, action: PayloadAction<IChat[]>) {
-            return {
-                ...state,
-                allChatsList: action.payload,
-            };
-        },
-
-        sendResponse(state, action: PayloadAction<IChat[]>) {
             return {
                 ...state,
                 allChatsList: action.payload,

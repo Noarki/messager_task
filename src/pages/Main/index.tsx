@@ -8,8 +8,6 @@ import { useAppSelector } from '../../_data/hooks/redux';
 import { getActiveChatById } from '../../_data/utils/utils';
 
 function Main() {
-    // const { showChatCreationMenu } = useSelector((state: RootState) => state.chat);
-
     const [showChatCreationMenu, setShowChatCreationMenu] = useState(false);
     const [showMessageWindow, setShowMessageWindow] = useState(false);
     const { activeChatId, allChatsList } = useAppSelector((state) => state.chat);
@@ -30,8 +28,6 @@ function Main() {
 
     return (
         <div className={style.mainWrapper} onClick={outclickCreationMenu}>
-            {/* <div className={style.invisibleClickScreen}></div> */}
-
             <MainText
                 setShowChatCreationMenu={setShowChatCreationMenu}
                 showChatCreationMenu={showChatCreationMenu}

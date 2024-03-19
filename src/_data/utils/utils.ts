@@ -6,7 +6,6 @@ export const getActiveChatById = (allChatsList: IChat[], activeChatId: number | 
 
 export const getAnswer = () => {
     let randomAnswerIndex = Math.floor(Math.random() * botsAnswers.answer.length);
-    console.log(randomAnswerIndex);
 
     return botsAnswers.answer[randomAnswerIndex];
 };

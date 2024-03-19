@@ -31,6 +31,7 @@ function Main() {
     return (
         <div className={style.mainWrapper} onClick={outclickCreationMenu}>
             {/* <div className={style.invisibleClickScreen}></div> */}
+
             <MainText
                 setShowChatCreationMenu={setShowChatCreationMenu}
                 showChatCreationMenu={showChatCreationMenu}

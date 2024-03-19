@@ -6,11 +6,14 @@ import ChatSubmitButton from './ChatSubmitButton/ChatSubmitButton';
 import { useAppDispatch, useAppSelector } from '../../_data/hooks/redux';
 import { chatSlice } from '../../_data/store/redusers/chatReducer';
 import { IChat } from '../../_data/models/chat';
+import { createPortal } from 'react-dom';
 
 interface Iprops {
     showMessageWindow: boolean;
     setShowMessageWindow: (x: boolean) => void;
 }
+
+const portal = document.getElementById('portal');
 
 const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageWindow }) => {
     const [displayCreationPanel, setDisplayCreationPanel] = useState<boolean>(false);
@@ -50,21 +53,26 @@ const ChatCreationMenu: React.FC<Iprops> = ({ showMessageWindow, setShowMessageW
         ));
     };
 
-    return (
-        <div className={style.mainWrapper} onClick={(e) => e.stopPropagation()}>
-            <div className={style.chatSelectionWrapper}>
-                <div className={style.chatSelectionMenu}>
-                    {renderChatCreation()}
-                    {renderChatNameButtons()}
-                </div>
+    return createPortal(
+        <>
+            <div className={style.modalPortalWrapper}>
+                <div className={style.mainWrapper} onClick={(e) => e.stopPropagation()}>
+                    <div className={style.chatSelectionWrapper}>
+                        <div className={style.chatSelectionMenu}>
+                            {renderChatCreation()}
+                            {renderChatNameButtons()}
+                        </div>
 
-                <Button
-                    className={style.newChatCreationBtn}
-                    children='СОЗДАТЬ НОВЫЙ ЧАТ'
-                    onClick={handleClick}
-                />
+                        <Button
+                            className={style.newChatCreationBtn}
+                            children='СОЗДАТЬ НОВЫЙ ЧАТ'
+                            onClick={handleClick}
+                        />
+                    </div>
+                </div>
             </div>
-        </div>
+        </>,
+        portal as HTMLElement
     );
 };
 

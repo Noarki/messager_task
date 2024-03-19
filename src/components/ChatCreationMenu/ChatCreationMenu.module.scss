@@ -1,3 +1,12 @@
+.modalPortalWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
 .mainWrapper {
     width: 480px;
     height: 651px;
@@ -7,10 +16,31 @@
     padding-bottom: 24px;
     background-color: white;
     position: absolute;
-    left: 800px;
-    top: 24px;
 
-    z-index: 5;
+    @media (max-width: 10000px) {
+        left: 1000px;
+        top: 24px;
+    }
+
+    @media (max-width: 1560px) {
+        left: 900px;
+        top: 24px;
+    }
+
+    @media (max-width: 1390px) {
+        left: 800px;
+        top: 24px;
+    }
+
+    @media (max-width: 1190px) {
+        left: 610px;
+        top: 24px;
+    }
+
+    // left: 800px;
+    // top: 24px;
+
+    z-index: 10;
 }
 
 .chatSelectionWrapper {
